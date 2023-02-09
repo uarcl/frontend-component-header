@@ -8,6 +8,11 @@ import AnonymousUserMenu from './AnonymousUserMenu';
 import AuthenticatedUserDropdown from './AuthenticatedUserDropdown';
 import messages from './messages';
 
+import LogoUAR from '../assets/logo_uar.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe,faPeopleArrows,faChalkboardTeacher,faSearch,faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import Cookies from 'js-cookie';
+
 function LinkedLogo({
   href,
   src,
@@ -26,41 +31,82 @@ LinkedLogo.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
 };
-
-function LearningHeader({
-  courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
-}) {
-  const { authenticatedUser } = useContext(AppContext);
-
-  const headerLogo = (
-    <LinkedLogo
-      className="logo"
-      href={`${getConfig().LMS_BASE_URL}/dashboard`}
-      src={getConfig().LOGO_URL}
-      alt={getConfig().SITE_NAME}
-    />
-  );
-
-  return (
-    <header className="learning-header">
-      <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
-      <div className="container-xl py-2 d-flex align-items-center">
-        {headerLogo}
-        <div className="flex-grow-1 course-title-lockup" style={{ lineHeight: 1 }}>
-          <span className="d-block small m-0">{courseOrg} {courseNumber}</span>
-          <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
-        </div>
-        {showUserDropdown && authenticatedUser && (
-          <AuthenticatedUserDropdown
-            username={authenticatedUser.username}
-          />
-        )}
-        {showUserDropdown && !authenticatedUser && (
-          <AnonymousUserMenu />
-        )}
+class LearningHeader extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = { lang: Cookies.get(getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME)}
+    this.changeLang = this.changeLang.bind(this);
+  }
+  langLabel(lang){
+    return (lang === 'en')?'ENGLISH':'ESPAÑOL';
+}
+  changeLang(){
+    const newLang = (this.state.lang == 'es-419')?'en':'es-419';
+    this.setState(state => ({ 
+      lang: newLang
+    }));
+    Cookies.set(getConfig().LANGUAGE_PREFERENCE_COOKIE_NAME,newLang,{domain:'.uardigital.cl',expires: 365,path:'/',secure: true,sameSite:'None'});
+    window.location.reload();
+  }
+  render() {
+    const {
+      intl,
+    } = this.props;
+    const { authenticatedUser } = this.context;
+    const headerLogo = (
+      <LinkedLogo
+        className="logo h-100"
+        href={`${getConfig().LMS_BASE_URL}/`}
+        src={LogoUAR}
+        alt={getConfig().SITE_NAME}
+      />
+    );
+    return (
+      <header className="learning-header">
+        <div className="d-flex uar-top-header" >
+          <div className="d-flex container-xl px-0 align-items-center justify-content-md-between justify-content-end uar-top-header-container">
+            <div className="d-none d-md-flex align-items-center justify-content-center w-100">
+              <a href="https://www.uar.cl/docencia/cursos-y-talleres/" className="btn btn-uar-header" target="_blank">
+                <span><FontAwesomeIcon icon={faPeopleArrows} fixedWidth className="btn-uar-header-icon"/>ESTUDIA EN LA UAR</span>
+              </a>
+              <a href="https://www.uar.cl/ensenaconlauar/" className="btn btn-uar-header" target="_blank">
+                <span><FontAwesomeIcon icon={faChalkboardTeacher} fixedWidth className="btn-uar-header-icon"/>ENSEÑA EN LA UAR</span>
+              </a>
+              <a href="https://www.uar.cl/investigaconlauar/" className="btn btn-uar-header" target="_blank">
+                <span><FontAwesomeIcon icon={faSearch} fixedWidth className="btn-uar-header-icon"/>INVESTIGA CON LA UAR</span>
+              </a>
+              <a href="https://www.uar.cl/vinculaconlauar/" className="btn btn-uar-header" target="_blank">
+                <span><FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth className="btn-uar-header-icon"/>VINCULA CON LA UAR</span>
+              </a>
+            </div>
+            <div>
+              <button className="btn btn-uar-lang-sel" onClick={this.changeLang}>
+                <span><FontAwesomeIcon icon={faGlobe} fixedWidth className="btn-uar-header-icon"/>{this.langLabel(this.state.lang)}</span>
+              </button>
+            </div>
+          </div>
       </div>
-    </header>
-  );
+        <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
+        <div className="container-xl py-2 d-flex align-items-center justify-content-between uar-bottom-header">
+          {headerLogo}
+          <div className="flex-grow-1 course-title-lockup" style={{ lineHeight: 1 }}>
+            <span className="d-block small m-0">{this.props.courseOrg} {this.props.courseNumber}</span>
+            <span className="d-block m-0 font-weight-bold course-title">{this.props.courseTitle}</span>
+          </div>
+          <div className="d-flex align-items-center justify-content-end flex-row">
+            {this.props.showUserDropdown && authenticatedUser && (
+              <AuthenticatedUserDropdown
+                username={authenticatedUser.username}
+              />
+            )}
+            {this.props.showUserDropdown && !authenticatedUser && (
+              <AnonymousUserMenu />
+            )}
+          </div>
+        </div>
+      </header>
+    );
+  }
 }
 
 LearningHeader.propTypes = {
@@ -77,5 +123,5 @@ LearningHeader.defaultProps = {
   courseTitle: null,
   showUserDropdown: true,
 };
-
+LearningHeader.contextType = AppContext;
 export default injectIntl(LearningHeader);

@@ -19,10 +19,11 @@ function AuthenticatedUserDropdown({ intl, username }) {
 
   return (
     <>
+      <a className="text-gray-700 mr-3" href="mailto:soporte@uardigital.cl" target="_blank">{intl.formatMessage(messages.help)}</a>
       <Dropdown className="user-dropdown">
         <Dropdown.Toggle variant="outline-primary">
-          <FontAwesomeIcon icon={faUserCircle} className="d-md-none" size="lg" />
-          <span data-hj-suppress className="d-none d-md-inline">
+          <FontAwesomeIcon icon={faUserCircle} size="lg"/>
+          <span data-hj-suppress className="d-none d-md-inline mx-2">
             {username}
           </span>
         </Dropdown.Toggle>
@@ -30,9 +31,6 @@ function AuthenticatedUserDropdown({ intl, username }) {
           {dashboardMenuItem}
           <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/u/${username}`}>
             {intl.formatMessage(messages.profile)}
-          </Dropdown.Item>
-          <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/account/settings`}>
-            {intl.formatMessage(messages.account)}
           </Dropdown.Item>
           { getConfig().ORDER_HISTORY_URL && (
             <Dropdown.Item href={getConfig().ORDER_HISTORY_URL}>

@@ -20,7 +20,7 @@ function LinkedLogo({
 }) {
   return (
     <a href={href} {...attributes}>
-      <img className="d-block" src={src} alt={alt} />
+      <img className="d-block uar-logo-header" src={src} alt={alt} />
     </a>
   );
 }

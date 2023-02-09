@@ -64,18 +64,18 @@ class LearningHeader extends React.Component{
     return (
       <header className="learning-header">
         <div className="d-flex uar-top-header" >
-          <div className="d-flex container-xl px-0 align-items-center justify-content-md-between justify-content-end uar-top-header-container">
-            <div className="d-none d-md-flex align-items-center justify-content-center w-100">
+          <div className="d-flex container-xl px-1 align-items-center justify-content-md-between justify-content-end uar-top-header-container">
+            <div className="d-flex align-items-center justify-content-start justify-content-md-center w-100">
               <a href="https://www.uar.cl/docencia/cursos-y-talleres/" className="btn btn-uar-header" target="_blank">
                 <span><FontAwesomeIcon icon={faPeopleArrows} fixedWidth className="btn-uar-header-icon"/>ESTUDIA EN LA UAR</span>
               </a>
-              <a href="https://www.uar.cl/ensenaconlauar/" className="btn btn-uar-header" target="_blank">
+              <a href="https://www.uar.cl/ensenaconlauar/" className="d-none d-md-flex btn btn-uar-header" target="_blank">
                 <span><FontAwesomeIcon icon={faChalkboardTeacher} fixedWidth className="btn-uar-header-icon"/>ENSEÑA EN LA UAR</span>
               </a>
-              <a href="https://www.uar.cl/investigaconlauar/" className="btn btn-uar-header" target="_blank">
+              <a href="https://www.uar.cl/investigaconlauar/" className="d-none d-md-flex btn btn-uar-header" target="_blank">
                 <span><FontAwesomeIcon icon={faSearch} fixedWidth className="btn-uar-header-icon"/>INVESTIGA CON LA UAR</span>
               </a>
-              <a href="https://www.uar.cl/vinculaconlauar/" className="btn btn-uar-header" target="_blank">
+              <a href="https://www.uar.cl/vinculaconlauar/" className="d-none d-md-flex btn btn-uar-header" target="_blank">
                 <span><FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth className="btn-uar-header-icon"/>VINCULA CON LA UAR</span>
               </a>
             </div>
@@ -90,8 +90,7 @@ class LearningHeader extends React.Component{
         <div className="container-xl py-2 d-flex align-items-center justify-content-between uar-bottom-header">
           {headerLogo}
           <div className="flex-grow-1 course-title-lockup" style={{ lineHeight: 1 }}>
-            <span className="d-block small m-0">{this.props.courseOrg} {this.props.courseNumber}</span>
-            <span className="d-block m-0 font-weight-bold course-title">{this.props.courseTitle}</span>
+            <span className="d-block mx-3 font-weight-bold course-title">{this.props.courseTitle}</span>
           </div>
           <div className="d-flex align-items-center justify-content-end flex-row">
             {this.props.showUserDropdown && authenticatedUser && (

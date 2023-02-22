@@ -55,7 +55,7 @@ class LearningHeader extends React.Component{
     const { authenticatedUser } = this.context;
     const headerLogo = (
       <LinkedLogo
-        className="logo h-100"
+        className="logo h-100 d-flex align-items-center"
         href={`${getConfig().LMS_BASE_URL}/`}
         src={LogoUAR}
         alt={getConfig().SITE_NAME}
@@ -89,7 +89,7 @@ class LearningHeader extends React.Component{
         <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
         <div className="container-xl py-2 d-flex align-items-center justify-content-between uar-bottom-header">
           {headerLogo}
-          <div className="flex-grow-1 course-title-lockup" style={{ lineHeight: 1 }}>
+          <div className="flex-grow-1 course-title-lockup">
             <span className="d-block mx-3 font-weight-bold course-title">{this.props.courseTitle}</span>
           </div>
           <div className="d-flex align-items-center justify-content-end flex-row">

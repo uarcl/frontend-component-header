@@ -13,7 +13,7 @@ const messages = defineMessages({
   },
   profile: {
     id: 'header.menu.profile.label',
-    defaultMessage: 'Profile',
+    defaultMessage: 'My profile',
     description: 'The text for the user menu Profile navigation link.',
   },
   account: {

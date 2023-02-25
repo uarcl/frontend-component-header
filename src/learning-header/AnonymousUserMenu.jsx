@@ -11,13 +11,6 @@ function AnonymousUserMenu({ intl }) {
   return (
     <div>
       <Button
-        className="mr-3"
-        variant="outline-primary"
-        href={`${getConfig().LMS_BASE_URL}/register?next=${encodeURIComponent(global.location.href)}`}
-      >
-        {intl.formatMessage(genericMessages.registerSentenceCase)}
-      </Button>
-      <Button
         variant="primary"
         href={`${getLoginRedirectUrl(global.location.href)}`}
       >

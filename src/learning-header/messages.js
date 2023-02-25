@@ -6,6 +6,11 @@ const messages = defineMessages({
     defaultMessage: 'Dashboard',
     description: 'The text for the user menu Dashboard navigation link.',
   },
+  courses: {
+    id: 'header.links.courses',
+    defaultMessage: 'Courses',
+    description: 'The text for the user menu Dashboard navigation link.',
+  },
   help: {
     id: 'header.help.label',
     defaultMessage: 'Help',

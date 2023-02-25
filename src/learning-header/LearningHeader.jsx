@@ -10,7 +10,7 @@ import messages from './messages';
 
 import LogoUAR from '../assets/logo_uar.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe,faPeopleArrows,faChalkboardTeacher,faSearch,faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe,faPeopleArrows,faChalkboardTeacher,faSearch,faExternalLinkAlt, faChalkboard} from '@fortawesome/free-solid-svg-icons';
 import Cookies from 'js-cookie';
 
 function LinkedLogo({
@@ -39,7 +39,10 @@ class LearningHeader extends React.Component{
   }
   langLabel(lang){
     return (lang === 'en')?'ENGLISH':'ESPAÑOL';
-}
+  }
+  langLabelShort(lang){
+    return (lang === 'en')?'EN':'ES';
+  }
   changeLang(){
     const newLang = (this.state.lang == 'es-419')?'en':'es-419';
     this.setState(state => ({ 
@@ -65,23 +68,12 @@ class LearningHeader extends React.Component{
       <header className="learning-header">
         <div className="d-flex uar-top-header" >
           <div className="d-flex container-xl px-1 align-items-center justify-content-md-between justify-content-end uar-top-header-container">
-            <div className="d-flex align-items-center justify-content-start justify-content-md-center w-100">
-              <a href="https://www.uar.cl/docencia/cursos-y-talleres/" className="btn btn-uar-header" target="_blank">
-                <span><FontAwesomeIcon icon={faPeopleArrows} fixedWidth className="btn-uar-header-icon"/>ESTUDIA EN LA UAR</span>
-              </a>
-              <a href="https://www.uar.cl/ensenaconlauar/" className="d-none d-md-flex btn btn-uar-header" target="_blank">
-                <span><FontAwesomeIcon icon={faChalkboardTeacher} fixedWidth className="btn-uar-header-icon"/>ENSEÑA EN LA UAR</span>
-              </a>
-              <a href="https://www.uar.cl/investigaconlauar/" className="d-none d-md-flex btn btn-uar-header" target="_blank">
-                <span><FontAwesomeIcon icon={faSearch} fixedWidth className="btn-uar-header-icon"/>INVESTIGA CON LA UAR</span>
-              </a>
-              <a href="https://www.uar.cl/vinculaconlauar/" className="d-none d-md-flex btn btn-uar-header" target="_blank">
-                <span><FontAwesomeIcon icon={faExternalLinkAlt} fixedWidth className="btn-uar-header-icon"/>VINCULA CON LA UAR</span>
-              </a>
-            </div>
+            <div className="mx-1 mx-md-3 font-weight-bold course-title text-white text-truncate w-100">{this.props.courseTitle}</div>
             <div>
               <button className="btn btn-uar-lang-sel" onClick={this.changeLang}>
-                <span><FontAwesomeIcon icon={faGlobe} fixedWidth className="btn-uar-header-icon"/>{this.langLabel(this.state.lang)}</span>
+                <span><FontAwesomeIcon icon={faGlobe} fixedWidth className="btn-uar-header-icon"/></span>
+                <span className="d-none d-md-inline-block">{this.langLabel(this.state.lang)}</span>
+                <span className="d-inline-block d-md-none">{this.langLabelShort(this.state.lang)}</span>
               </button>
             </div>
           </div>
@@ -89,8 +81,11 @@ class LearningHeader extends React.Component{
         <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
         <div className="container-xl py-2 d-flex align-items-center justify-content-between uar-bottom-header">
           {headerLogo}
-          <div className="flex-grow-1 course-title-lockup">
-            <span className="d-block mx-3 font-weight-bold course-title">{this.props.courseTitle}</span>
+          <div className="d-flex flex-row m-0 ml-md-3 w-100 bg-white uar-top-menu-container">
+            <a className="text-gray-700 uar-mfe-font uar-font-12p text-decoration-none text-uppercase font-weight-bold py-2 px-3 mx-2 text-center uar-top-menu" href={`${getConfig().LMS_BASE_URL}/dashboard`}>
+              <FontAwesomeIcon icon={faChalkboard} fixedWidth className="uar-top-menu-icon d-md-none uar-font-18p"/>
+              <div className="text-uppercase mt-2 uar-top-menu-text">{intl.formatMessage(messages.courses)}</div>
+            </a>
           </div>
           <div className="d-flex align-items-center justify-content-end flex-row">
             {this.props.showUserDropdown && authenticatedUser && (

@@ -19,7 +19,7 @@ function AuthenticatedUserDropdown({ intl, username }) {
 
   return (
     <>
-      <a className="text-gray-700 mr-3" href="mailto:soporte@uardigital.cl" target="_blank">{intl.formatMessage(messages.help)}</a>
+      <a className="text-gray-700 mr-3 uar-mfe-font uar-font-12p text-decoration-none text-uppercase font-weight-bold uar-top-menu py-2 px-3" href="mailto:soporte@uardigital.cl" target="_blank">{intl.formatMessage(messages.help)}</a>
       <Dropdown className="user-dropdown">
         <Dropdown.Toggle variant="outline-primary">
           <FontAwesomeIcon icon={faUserCircle} size="lg"/>
@@ -28,7 +28,6 @@ function AuthenticatedUserDropdown({ intl, username }) {
           </span>
         </Dropdown.Toggle>
         <Dropdown.Menu className="dropdown-menu-right">
-          {dashboardMenuItem}
           <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/u/${username}`}>
             {intl.formatMessage(messages.profile)}
           </Dropdown.Item>

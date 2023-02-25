@@ -1,6 +1,6 @@
 {
   "name": "@uarcl/frontend-component-header-uar",
-  "version": "1.0.17",
+  "version": "1.0.22",
   "description": "The standard header for Open edX",
   "main": "dist/index.js",
   "publishConfig": {

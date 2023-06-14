@@ -11,6 +11,11 @@ const messages = defineMessages({
     defaultMessage: 'Courses',
     description: 'The text for the user menu Dashboard navigation link.',
   },
+  certificates: {
+    id: 'header.links.certificates',
+    defaultMessage: 'Certificates',
+    description: 'The text for the user menu Dashboard navigation link.',
+  },
   help: {
     id: 'header.help.label',
     defaultMessage: 'Help',

@@ -10,7 +10,7 @@ import messages from './messages';
 
 import LogoUAR from '../assets/logo_uar.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe,faPeopleArrows,faChalkboardTeacher,faSearch,faExternalLinkAlt, faChalkboard} from '@fortawesome/free-solid-svg-icons';
+import { faGlobe,faPeopleArrows,faChalkboardTeacher,faSearch,faExternalLinkAlt, faChalkboard,faAward} from '@fortawesome/free-solid-svg-icons';
 import Cookies from 'js-cookie';
 
 function LinkedLogo({
@@ -85,6 +85,10 @@ class LearningHeader extends React.Component{
             <a className="text-gray-700 uar-mfe-font uar-font-12p text-decoration-none text-uppercase font-weight-bold py-2 px-3 mx-2 text-center uar-top-menu" href={`${getConfig().LMS_BASE_URL}/dashboard`}>
               <FontAwesomeIcon icon={faChalkboard} fixedWidth className="uar-top-menu-icon d-md-none uar-font-18p"/>
               <div className="text-uppercase mt-2 uar-top-menu-text">{intl.formatMessage(messages.courses)}</div>
+            </a>
+            <a className="text-gray-700 uar-mfe-font uar-font-12p text-decoration-none text-uppercase font-weight-bold py-2 px-3 mx-2 text-center uar-top-menu" href="https://mi.uar.cl/certificados">
+              <FontAwesomeIcon icon={faAward} fixedWidth className="uar-top-menu-icon d-md-none uar-font-18p"/>
+              <div className="text-uppercase mt-2 uar-top-menu-text">{intl.formatMessage(messages.certificates)}</div>
             </a>
           </div>
           <div className="d-flex align-items-center justify-content-end flex-row">

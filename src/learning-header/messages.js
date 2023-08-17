@@ -18,7 +18,7 @@ const messages = defineMessages({
   },
   applications: {
     id: 'header.links.applications',
-    defaultMessage: 'Aplications',
+    defaultMessage: 'Applications',
     description: 'The text for the user menu Dashboard navigation link.',
   },
   help: {

@@ -16,6 +16,11 @@ const messages = defineMessages({
     defaultMessage: 'Certificates',
     description: 'The text for the user menu Dashboard navigation link.',
   },
+  applications: {
+    id: 'header.links.applications',
+    defaultMessage: 'Aplications',
+    description: 'The text for the user menu Dashboard navigation link.',
+  },
   help: {
     id: 'header.help.label',
     defaultMessage: 'Help',

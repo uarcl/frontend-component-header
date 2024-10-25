@@ -90,7 +90,7 @@ class LearningHeader extends React.Component{
               <FontAwesomeIcon icon={faAward} fixedWidth className="uar-top-menu-icon d-md-none uar-font-18p"/>
               <div className="text-uppercase mt-2 uar-top-menu-text">{intl.formatMessage(messages.certificates)}</div>
             </a>
-            <a className="text-gray-700 uar-mfe-font uar-font-12p text-decoration-none text-uppercase font-weight-bold py-2 px-3 mx-2 text-center uar-top-menu" href="https://mi.uar.cl/convocatorias">
+            <a className="text-gray-700 uar-mfe-font uar-font-12p text-decoration-none text-uppercase font-weight-bold py-2 px-3 mx-2 text-center uar-top-menu" href="https://mi.uar.cl/postulaciones">
               <FontAwesomeIcon icon={faFileSignature} fixedWidth className="uar-top-menu-icon d-md-none uar-font-18p"/>
               <div className="text-uppercase mt-2 uar-top-menu-text">{intl.formatMessage(messages.applications)}</div>
             </a>
